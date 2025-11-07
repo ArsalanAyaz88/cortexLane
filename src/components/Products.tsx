@@ -18,43 +18,17 @@ const Products = () => {
 
   const products = [
     {
-      name: "CortexLane Studio",
-      tagline: "Build Agentic apps fast",
-      description: "Accelerate your AI development with our comprehensive studio platform. Build, test, and deploy agentic applications with intuitive tools and pre-built components.",
+      name: "Youtube Research Agent with MCP",
+      tagline: "Research YouTube Stats and give data based insights for your channel ",
+      description:
+        "Launch the dashboard to explore the YouTube research agent.",
       features: [
-        "Visual workflow builder for AI agents",
-        "Pre-built templates and components",
-        "Real-time collaboration tools",
-        "One-click deployment to production"
+        "Multi-Tool MCP integration",
+        "YouTube search and retrieval",
+        "Dashboard UI",
       ],
-      cta: "Try demo",
-      href: "#demo",
-    },
-    {
-      name: "CortexLane Vision",
-      tagline: "Real‑time detection & tracking",
-      description: "Advanced computer vision solutions for real-time object detection, tracking, and analysis. Process video streams with state-of-the-art AI models.",
-      features: [
-        "Real-time object detection and tracking",
-        "Custom model training and fine-tuning",
-        "Multi-camera support and analytics",
-        "Edge deployment capabilities"
-      ],
-      cta: "See use cases",
-      href: "#use-cases",
-    },
-    {
-      name: "CortexLane Ops",
-      tagline: "MLOps for LLMs and CV",
-      description: "Complete MLOps platform for managing, monitoring, and scaling your AI models. Streamline your ML lifecycle from training to production.",
-      features: [
-        "Model versioning and experiment tracking",
-        "Automated model deployment pipelines",
-        "Performance monitoring and alerts",
-        "Resource optimization and scaling"
-      ],
-      cta: "Book a demo",
-      href: "#contact",
+      cta: "Open Dashboard",
+      href: "https://automation-agent-frontend.vercel.app/dashboard",
     },
   ];
 
@@ -162,13 +136,13 @@ const Products = () => {
           ref={titleRef}
           className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4"
         >
-          CortexLane <span className="font-playfair-display italic text-blue-400">Products</span>
+          Our AI <span className="font-playfair-display italic text-blue-400">Products</span>
         </h2>
         <p
           ref={descriptionRef}
           className="text-base sm:text-lg lg:text-xl text-white/80 max-w-3xl mx-auto leading-relaxed"
         >
-          Ship faster with our ready-to-run AI product stack.
+          All Products are built to helping real businesses.
         </p>
       </div>
 
@@ -240,6 +214,8 @@ const Products = () => {
 
           <a
             href={products[activeIndex].href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-all duration-300"
           >
             {products[activeIndex].cta}

@@ -64,9 +64,10 @@ const Header = () => {
     {
       title: "AI Products",
       items: [
-        "CortexLane Studio",
-        "CortexLane Vision",
-        "CortexLane Ops",
+        {
+          label: "Youtube Research Agent with MCP",
+          href: "https://automation-agent-frontend.vercel.app/dashboard",
+        },
       ],
     },
     {
@@ -231,16 +232,23 @@ const Header = () => {
                                 {section.title}
                               </h3>
                               <ul className="space-y-3">
-                                {section.items.map((subItem, subIdx) => (
-                                  <li key={subIdx}>
-                                    <a
-                                      href="#"
-                                      className="text-white/90 hover:text-white text-sm font-medium transition-colors block hover:translate-x-1 duration-200 whitespace-nowrap cursor-pointer"
-                                    >
-                                      {subItem}
-                                    </a>
-                                  </li>
-                                ))}
+                                {section.items.map((subItem: any, subIdx: number) => {
+                                  const isString = typeof subItem === "string";
+                                  const label = isString ? subItem : subItem.label;
+                                  const href = isString ? "#" : subItem.href || "#";
+                                  const isExternal = typeof href === "string" && href.startsWith("http");
+                                  return (
+                                    <li key={subIdx}>
+                                      <a
+                                        href={href}
+                                        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                                        className="text-white/90 hover:text-white text-sm font-medium transition-colors block hover:translate-x-1 duration-200 whitespace-nowrap cursor-pointer"
+                                      >
+                                        {label}
+                                      </a>
+                                    </li>
+                                  );
+                                })}
                               </ul>
                             </div>
                           ))}
@@ -370,16 +378,23 @@ const Header = () => {
                               {section.title}
                             </h4>
                             <ul className="space-y-1">
-                              {section.items.map((subItem, subIdx) => (
-                                <li key={subIdx}>
-                                  <a
-                                    href="#"
-                                    className="block px-4 py-2 text-sm text-white/90 hover:text-white hover:bg-white/5 rounded transition-colors cursor-pointer"
-                                  >
-                                    {subItem}
-                                  </a>
-                                </li>
-                              ))}
+                              {section.items.map((subItem: any, subIdx: number) => {
+                                const isString = typeof subItem === "string";
+                                const label = isString ? subItem : subItem.label;
+                                const href = isString ? "#" : subItem.href || "#";
+                                const isExternal = typeof href === "string" && href.startsWith("http");
+                                return (
+                                  <li key={subIdx}>
+                                    <a
+                                      href={href}
+                                      {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                                      className="block px-4 py-2 text-sm text-white/90 hover:text-white hover:bg-white/5 rounded transition-colors cursor-pointer"
+                                    >
+                                      {label}
+                                    </a>
+                                  </li>
+                                );
+                              })}
                             </ul>
                           </div>
                         ))}
