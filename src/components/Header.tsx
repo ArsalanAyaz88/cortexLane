@@ -3,9 +3,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 
+// Types for dropdown content
+type NavSectionItem = string | { label: string; href?: string };
+type NavSection = { title: string; items: NavSectionItem[] };
+
 const Header = () => {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(
     null
@@ -41,7 +44,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const aiServicesItems = [
+  const aiServicesItems: NavSection[] = [
     {
       title: "Core Services",
       items: ["AI Development", "Machine Learning", "Computer Vision"],
@@ -60,7 +63,7 @@ const Header = () => {
     },
   ];
 
-  const productsItems = [
+  const productsItems: NavSection[] = [
     {
       title: "AI Products",
       items: [
@@ -76,7 +79,7 @@ const Header = () => {
     },
   ];
 
-  const aboutUsItems = [
+  const aboutUsItems: NavSection[] = [
     {
       title: "Company",
       items: [
@@ -128,14 +131,13 @@ const Header = () => {
   };
 
   const handleNavItemHover = (itemName: string) => {
-    setHoveredItem(itemName);
     if (navItems.find((item) => item.name === itemName)?.hasDropdown) {
       setActiveDropdown(itemName);
     }
   };
 
   const handleNavItemLeave = () => {
-    setHoveredItem(null);
+    // no-op; dropdown close is handled elsewhere
   };
 
   const handleLanguageSelect = (language: {
@@ -155,7 +157,6 @@ const Header = () => {
       onMouseLeave={() => {
         setIsHeaderHovered(false);
         setActiveDropdown(null);
-        setHoveredItem(null);
       }}
     >
       {/* Main Header Container */}
@@ -232,7 +233,7 @@ const Header = () => {
                                 {section.title}
                               </h3>
                               <ul className="space-y-3">
-                                {section.items.map((subItem: any, subIdx: number) => {
+                                {section.items.map((subItem: NavSectionItem, subIdx: number) => {
                                   const isString = typeof subItem === "string";
                                   const label = isString ? subItem : subItem.label;
                                   const href = isString ? "#" : subItem.href || "#";
@@ -266,11 +267,9 @@ const Header = () => {
               <div
                 className="relative"
                 onMouseEnter={() => {
-                  setHoveredItem("language");
                   setActiveDropdown("language");
                 }}
                 onMouseLeave={() => {
-                  setHoveredItem(null);
                 }}
               >
                 <button className="flex items-center gap-1 text-white/90 hover:text-white transition-colors px-3 py-2 rounded-md cursor-pointer">
@@ -378,7 +377,7 @@ const Header = () => {
                               {section.title}
                             </h4>
                             <ul className="space-y-1">
-                              {section.items.map((subItem: any, subIdx: number) => {
+                              {section.items.map((subItem: NavSectionItem, subIdx: number) => {
                                 const isString = typeof subItem === "string";
                                 const label = isString ? subItem : subItem.label;
                                 const href = isString ? "#" : subItem.href || "#";
