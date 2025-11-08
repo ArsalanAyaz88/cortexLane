@@ -19,13 +19,14 @@ const Products = () => {
   const products = [
     {
       name: "Youtube Research Agent with MCP",
-      tagline: "Research YouTube Stats and give data based insights for your channel ",
+      tagline:
+        "Predict your next breakout video using you and your competitors' best-performing stats—data, not guesses.",
       description:
         "Launch the dashboard to explore the YouTube research agent.",
       features: [
-        "Multi-Tool MCP integration",
-        "YouTube search and retrieval",
-        "Dashboard UI",
+        "Analyzes views, likes, and comments across your catalog to expose winning patterns",
+        "Benchmarks competitors to surface gaps and high-impact opportunities",
+        "Generates confident next-video ideas backed by real performance data",
       ],
       cta: "Open Dashboard",
       href: "https://automation-agent-frontend.vercel.app/dashboard",
